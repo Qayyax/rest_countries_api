@@ -3,6 +3,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { IoMoonSharp } from "react-icons/io5";
 import { DarkModeContext } from "./DarkModeContext";
 import { useContext } from "react";
+import Helmet from 'react-helmet';
 
 export default function Header() {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext)
@@ -11,6 +12,12 @@ export default function Header() {
   const bgColor = isDarkMode ? '#2B3844' : '#FFFFFF'
   return (
     <>
+      {/*Helmet used to set body background color*/}
+      <Helmet
+        bodyAttributes={{
+          style: `background-color: ${isDarkMode ? '#202C36' : '#F2F2F2'}`
+        }}
+      />
       <div
         className={`shadow-lg flex justify-between items-center px-4 py-7  md:px-20 md:py-6`}
         style={{
