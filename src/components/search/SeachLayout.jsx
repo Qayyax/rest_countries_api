@@ -6,21 +6,47 @@ import { DarkModeContext } from "../DarkModeContext"
 
 export default function SearchLayout() {
   const [filtered, setFiltered] = useState(false)
-  const [country, setCountry] = useState("")
-  const [region, setRegion] = useState("")
+  const [fullURL, setFullURL] = useState("")
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   const { isDarkMode } = useContext(DarkModeContext)
 
   const textColor = isDarkMode ? '#FFFFFF' : '#111517'
   const bgColor = isDarkMode ? '#202C36' : '#F2F2F2'
 
+  const baseUrl = "https://restcountries.com/v3.1/"
+
   useEffect(() => {
-    fetch()
-  }, [])
+    const fetchData = async () => {
+      try {
+        const response = await fetch(fullURL)
+        if (!response.ok) {
+          throw new Error(`HTTP error: Status ${response.status}`)
+        }
+        let postData = await response.json()
+        setData(handleData(postData))
+        setError(null)
+      } catch (err) {
+        setError(err.message)
+        setData(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+    if (fullURL) {
+      fetchData()
+    }
+  }, [fullURL])
+
+  console.log(data)
 
   // reads back the country inputted by the user
-  function handleData(data) {
-    setCountry(data)
+  function handleCountryData(data) {
+    // setCountry(data)
+    let fullUrl = handleURL("name", data.toLowerCase())
+    setFullURL(fullUrl)
   }
 
   // toggle the filter state
@@ -30,9 +56,34 @@ export default function SearchLayout() {
 
   // used to set the filtered region selected
   function handleRegion(item) {
-    setRegion(item)
+    // setRegion(item)
     toggleFilter()
+    let fullUrl = handleURL("region", item.toLowerCase())
+    setFullURL(fullUrl)
   }
+
+  // function to get fullURL
+  function handleURL(type, name) {
+    return baseUrl + type + "/" + name
+  }
+
+  // Function to handle data returned
+  function handleData(data) {
+    const parsedData = data.map(item => {
+      return {
+        name: item.name?.common || "nill",
+        capital: item.capital?.[0] || "nill",
+        region: item.region || "nill",
+        population: item.population || "nill",
+        flags: {
+          png: item.flags?.png || "nill",
+          alt: item.flags?.alt || "nill"
+        }
+      }
+    })
+    return parsedData
+  }
+
 
   const filterCountries = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
   return (
@@ -45,7 +96,7 @@ md:flex-row md:justify-between md:gap-x-2
         background: bgColor
       }}
     >
-      <Search onSendData={handleData} />
+      <Search onSendData={handleCountryData} />
 
       <div className="relative">
 
