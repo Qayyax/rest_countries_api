@@ -3,7 +3,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import Country from "./Country";
 
 export default function DisplayCountries({ data }) {
+  const { pageID } = useParams()
   const [currentPage, setCurrentPage] = useState(1)
+  useEffect(() => {
+    const pageNumber = parseInt(pageID, 10);
+    if (!isNaN(pageNumber)) {
+      setCurrentPage(pageNumber);
+    } else {
+      setCurrentPage(1);
+    }
+  }, [pageID]);
   const navigate = useNavigate()
   const itemsPerPage = 8
   const totalPages = Math.ceil(data.length / itemsPerPage)
@@ -16,7 +25,7 @@ export default function DisplayCountries({ data }) {
 
   function handlePageChange(newPage) {
     setCurrentPage(newPage)
-    navigate(`/countries/${currentPage}`, { replace: true })
+    navigate(`/countries/${newPage}`, { replace: true })
   }
 
   return (

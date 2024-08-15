@@ -48,7 +48,7 @@ export default function SearchLayout() {
     // setCountry(data)
     let fullUrl = handleURL("name", data.toLowerCase())
     setFullURL(fullUrl)
-    navigate("/countries", { replace: true })
+    navigate("/countries/1", { replace: true })
   }
 
   // toggle the filter state
@@ -62,7 +62,7 @@ export default function SearchLayout() {
     toggleFilter()
     let fullUrl = handleURL("region", item.toLowerCase())
     setFullURL(fullUrl)
-    navigate("/countries", { replace: true })
+    navigate("/countries/1", { replace: true })
   }
 
   // function to get fullURL
