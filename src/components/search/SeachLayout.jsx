@@ -3,7 +3,7 @@ import Filter from "./Filter"
 import FilterItems from "./FilterItems"
 import { useEffect, useState, useContext } from "react"
 import { DarkModeContext } from "../DarkModeContext"
-import { Navigate, Outlet } from "react-router-dom"
+import { useNavigate, Outlet } from "react-router-dom"
 
 export default function SearchLayout() {
   const [filtered, setFiltered] = useState(false)
@@ -11,6 +11,7 @@ export default function SearchLayout() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   const { isDarkMode } = useContext(DarkModeContext)
 
@@ -47,6 +48,7 @@ export default function SearchLayout() {
     // setCountry(data)
     let fullUrl = handleURL("name", data.toLowerCase())
     setFullURL(fullUrl)
+    navigate("/countries", { replace: true })
   }
 
   // toggle the filter state
@@ -60,6 +62,7 @@ export default function SearchLayout() {
     toggleFilter()
     let fullUrl = handleURL("region", item.toLowerCase())
     setFullURL(fullUrl)
+    navigate("/countries", { replace: true })
   }
 
   // function to get fullURL
@@ -132,7 +135,7 @@ rounded-md py-4 px-6 flex flex-col gap-y-2
         </div>
       </div>
       <Outlet context={{ data, loading, error }} />
-      <Navigate to={"countries"} replace={true} />
     </>
   )
 }
+// <Navigate to={"countries"} replace={true} />
