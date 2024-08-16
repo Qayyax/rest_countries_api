@@ -116,7 +116,7 @@ md:flex-row md:justify-between md:gap-x-2
           {filtered && (
             <div
               className={`absolute top-full left-0 mt-2 w-full
-rounded-md py-4 px-6 flex flex-col gap-y-2
+rounded-md py-4 px-6 flex flex-col gap-y-2 shadow-md z-20
 `}
               style={{
                 background: isDarkMode ? "#2B3844" : "#FFFFFF"

@@ -1,8 +1,20 @@
-export default function Country({data}) {
+import { useContext } from "react";
+import { DarkModeContext } from "../DarkModeContext";
+
+export default function Country({ data }) {
+  const { isDarkMode } = useContext(DarkModeContext)
+  const textColor = isDarkMode ? '#FFFFFF' : '#111517'
+  const bgColor = isDarkMode ? '#2B3844' : '#F2F2F2'
 
   return (
-  <div>
-      <img src={data.flags.png} alt={data.flags.alt}/>
+    <div
+      className="flex flex-col shadow-md"
+      style={{
+        color: textColor,
+        backgroundColor: bgColor,
+      }}
+    >
+      <img src={data.flags.png} alt={data.flags.alt} />
       <div>
         <h2>{data.name}</h2>
         <div>
