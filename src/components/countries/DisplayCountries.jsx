@@ -41,7 +41,9 @@ export default function DisplayCountries({ data }) {
       className="relative"
     >
       <div
-        className="flex flex-col items-center justify-center gap-y-10"
+        className={`flex flex-col items-center justify-center gap-y-10 
+md:flex-row md:px-20 md:flex-wrap md:gap-20 
+`}
       >
         {countriesToDisplay.map((item, index) => (
           <Country key={index} data={item} />
@@ -53,12 +55,12 @@ export default function DisplayCountries({ data }) {
       >
         {/*Hover state is left on the buttons*/}
         <div
-          className="flex justify-around w-full mt-4 px-4"
+          className="flex justify-around w-full mt-4 px-4 pb-3"
         >
           {currentPage > 1 && (
             <button
               onClick={() => handlePageChange(currentPage - 1)}
-              className={`p-2 rounded-md cursor-pointer border`}
+              className={`p-2 rounded-md cursor-pointer border shadow-md`}
               style={{
                 color: textColor,
                 backgroundColor: bgColor
@@ -71,7 +73,7 @@ export default function DisplayCountries({ data }) {
           {currentPage < totalPages && (
             <button
               onClick={() => handlePageChange(currentPage + 1)}
-              className={`p-2 rounded-md cursor-pointer border`}
+              className={`p-2 rounded-md cursor-pointer border shadow-md`}
               style={{
                 color: textColor,
                 backgroundColor: bgColor
