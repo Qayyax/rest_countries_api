@@ -8,6 +8,7 @@ export default function DisplayCountries({ data }) {
   const { pageID } = useParams()
   const [currentPage, setCurrentPage] = useState(1)
   const { isDarkMode } = useContext(DarkModeContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const pageNumber = parseInt(pageID, 10);
@@ -17,7 +18,6 @@ export default function DisplayCountries({ data }) {
       setCurrentPage(1);
     }
   }, [pageID]);
-  const navigate = useNavigate()
   const itemsPerPage = 8
   const totalPages = Math.ceil(data.length / itemsPerPage)
 

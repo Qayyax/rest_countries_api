@@ -82,7 +82,7 @@ export default function SearchLayout() {
           png: item.flags?.png || "nill",
           alt: item.flags?.alt || "nill"
         },
-        nativeName: item.nativeName?.common || "nill",
+        nativeName: item.name.nativeName.eng.common || "nill",
         subRegion: item.subregion || "nill",
         tld: item.tld || "nill",
         currency: item.currencies.COP?.name || "nill",
