@@ -18,6 +18,7 @@ export default function DisplayCountries({ data }) {
       setCurrentPage(1);
     }
   }, [pageID]);
+
   const itemsPerPage = 8
   const totalPages = Math.ceil(data.length / itemsPerPage)
 
