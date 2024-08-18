@@ -67,34 +67,6 @@ export default function SearchLayout() {
     return baseUrl + type + '/' + name;
   }
 
-  // Function to handle data returned
-  function handleData(data) {
-    const parsedData = data.map((item) => {
-      const nativeName = Object.values(item.name.nativeName)[0]
-      const currencies = Object.values(item.currencies).map(currency => {
-        return currency.name
-      })
-      const languages = Object.values(item.languages)
-
-      return {
-        name: item.name?.common || 'nill',
-        capital: item.capital || 'nill',
-        region: item.region || 'nill',
-        population: item.population || 'nill',
-        flags: {
-          png: item.flags?.png || 'nill',
-          alt: item.flags?.alt || 'nill',
-        },
-        nativeName: nativeName?.common || 'nill',
-        subRegion: item.subregion || 'nill',
-        tld: item.tld || 'nill',
-        currency: currencies || 'nill',
-        languages: languages || 'nill',
-        borderCountries: item.borders || [],
-      };
-    });
-    return parsedData;
-  }
 
   // Regions to filter.
   const filterCountries = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
@@ -135,4 +107,34 @@ rounded-md py-4 px-6 flex flex-col gap-y-2 shadow-md z-20
       <Outlet context={{ data, loading, error }} />
     </>
   );
+}
+
+
+// Function to handle data returned
+export function handleData(data) {
+  const parsedData = data.map((item) => {
+    const nativeName = Object.values(item.name.nativeName)[0]
+    const currencies = Object.values(item.currencies).map(currency => {
+      return currency.name
+    })
+    const languages = Object.values(item.languages)
+
+    return {
+      name: item.name?.common || 'nill',
+      capital: item.capital || 'nill',
+      region: item.region || 'nill',
+      population: item.population || 'nill',
+      flags: {
+        png: item.flags?.png || 'nill',
+        alt: item.flags?.alt || 'nill',
+      },
+      nativeName: nativeName?.common || 'nill',
+      subRegion: item.subregion || 'nill',
+      tld: item.tld || 'nill',
+      currency: currencies || 'nill',
+      languages: languages || 'nill',
+      borderCountries: item.borders || [],
+    };
+  });
+  return parsedData;
 }

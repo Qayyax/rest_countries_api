@@ -4,8 +4,9 @@ export default function CountryDetail() {
   const { pageID, country } = useParams()
   const location = useLocation()
   const data = location.state?.data
+  const borders = location.state?.borderData
   console.log(data)
-  console.log(Object.values(data.languages))
+  console.log(borders)
 
   if (!data) return (
     <h1 className="flex items-center justify-center m-auto">No Country to display</h1>
@@ -24,11 +25,12 @@ export default function CountryDetail() {
     )
   }
 
-  function borderBotton(countryData) {
+  function borderBotton(countryData, index) {
     // change button to Link
     return (
       <button
         className="p-4 border border-black"
+        key={index}
       >
         {countryData}
       </button>
@@ -69,7 +71,7 @@ export default function CountryDetail() {
             <div>
               {/*Function that shows the button*/
                 // change border countries in search data to fetch the countryies ahead of time.
-                data.borderCountries.map(item => borderBotton(item))
+                data.borderCountries.map((item, index) => borderBotton(item, index))
               }
             </div>
           </div>
