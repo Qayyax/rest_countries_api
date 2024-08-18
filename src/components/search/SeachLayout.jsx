@@ -70,6 +70,12 @@ export default function SearchLayout() {
   // Function to handle data returned
   function handleData(data) {
     const parsedData = data.map((item) => {
+      const nativeName = Object.values(item.name.nativeName)[0]
+      const currencies = Object.values(item.currencies).map(currency => {
+        return currency.name
+      })
+      const languages = Object.values(item.languages)
+
       return {
         name: item.name?.common || 'nill',
         capital: item.capital || 'nill',
@@ -79,11 +85,11 @@ export default function SearchLayout() {
           png: item.flags?.png || 'nill',
           alt: item.flags?.alt || 'nill',
         },
-        nativeName: item.name.nativeName.eng?.common || 'nill',
+        nativeName: nativeName?.common || 'nill',
         subRegion: item.subregion || 'nill',
         tld: item.tld || 'nill',
-        currency: item.currencies.COP?.name || 'nill',
-        languages: item.languages || 'nil',
+        currency: currencies || 'nill',
+        languages: languages || 'nill',
         borderCountries: item.borders || [],
       };
     });
