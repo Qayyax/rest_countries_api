@@ -117,7 +117,7 @@ export default function CountryDetail() {
               >
                 {/*Function that shows the button*/
                   // change border countries in search data to fetch the countryies ahead of time.
-                  borders && borders.map((item, index) => {
+                  borders.map((item, index) => {
                     return borderBotton(...item, index)
                   })
                 }
