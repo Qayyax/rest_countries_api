@@ -9,7 +9,6 @@ export default function CountryLayout() {
   const [loading, setLoading] = useState(initialLoading);
   const { isDarkMode } = useContext(DarkModeContext);
   const textColor = isDarkMode ? '#FFFFFF' : '#111517';
-  const bgColor = isDarkMode ? '#202C36' : '#F2F2F2';
 
   useEffect(() => {
     const timer = setTimeout(() => {

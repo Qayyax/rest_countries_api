@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Country from "./Country";
 import { DarkModeContext } from "../DarkModeContext";
 
@@ -9,6 +9,7 @@ export default function DisplayCountries({ data }) {
   const [currentPage, setCurrentPage] = useState(1)
   const { isDarkMode } = useContext(DarkModeContext)
   const navigate = useNavigate()
+
 
   useEffect(() => {
     const pageNumber = parseInt(pageID, 10);
@@ -34,7 +35,7 @@ export default function DisplayCountries({ data }) {
 
   function handlePageChange(newPage) {
     setCurrentPage(newPage)
-    navigate(`/countries/${newPage}`, { replace: true })
+    navigate(`/countries/${newPage}`)
   }
 
   return (

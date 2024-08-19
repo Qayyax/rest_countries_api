@@ -42,14 +42,12 @@ export default function SearchLayout() {
     }
   }, [fullURL]);
 
+
   // reads back the country inputted by the user
   function handleCountryData(name) {
     let fullUrl = handleURL('name', name.toLowerCase());
     setFullURL(fullUrl);
-    navigate('/countries/1',
-      { replace: true },
-      { sate: data },
-    );
+    navigate('/countries/1');
   }
 
   // toggle the filter state
@@ -62,17 +60,13 @@ export default function SearchLayout() {
     toggleFilter();
     let fullUrl = handleURL('region', item.toLowerCase());
     setFullURL(fullUrl);
-    navigate('/countries/1',
-      { replace: true },
-      { sate: data },
-    );
+    navigate('/countries/1');
   }
 
   // function to get fullURL
   function handleURL(type, name) {
     return baseUrl + type + '/' + name;
   }
-
 
   // Regions to filter.
   const filterCountries = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
