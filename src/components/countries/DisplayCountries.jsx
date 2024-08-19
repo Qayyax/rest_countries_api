@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import Country from "./Country";
 import { DarkModeContext } from "../DarkModeContext";
 

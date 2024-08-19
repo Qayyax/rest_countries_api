@@ -4,6 +4,7 @@ import SearchLayout from "./components/search/SeachLayout";
 import DarkModeProvider from "./components/DarkModeContext";
 import ContryLayout from "./components/countries/CountryLayout";
 import CountryDetail from "./components/countries/CountryDetail";
+import BorderCountry from "./components/countries/BorderCountries";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
               <Route path="countries/:pageID" element={<ContryLayout />} />
             </Route>
             <Route path="/countries/:pageID/:country" element={<CountryDetail />} />
+            <Route path="/countries/:pageID/:country/:border" element={<BorderCountry />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -43,10 +43,13 @@ export default function SearchLayout() {
   }, [fullURL]);
 
   // reads back the country inputted by the user
-  function handleCountryData(data) {
-    let fullUrl = handleURL('name', data.toLowerCase());
+  function handleCountryData(name) {
+    let fullUrl = handleURL('name', name.toLowerCase());
     setFullURL(fullUrl);
-    navigate('/countries/1', { replace: true });
+    navigate('/countries/1',
+      { replace: true },
+      { sate: data },
+    );
   }
 
   // toggle the filter state
@@ -59,7 +62,10 @@ export default function SearchLayout() {
     toggleFilter();
     let fullUrl = handleURL('region', item.toLowerCase());
     setFullURL(fullUrl);
-    navigate('/countries/1', { replace: true });
+    navigate('/countries/1',
+      { replace: true },
+      { sate: data },
+    );
   }
 
   // function to get fullURL

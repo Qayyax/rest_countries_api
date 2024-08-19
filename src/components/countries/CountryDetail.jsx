@@ -32,24 +32,21 @@ export default function CountryDetail() {
   }
 
   function borderBotton(countryData, index) {
-    // change button to Link
-    // /countries/:pageID/:country
-    // to={`/countries/${pageID}/${countryData.name}`}
     return (
-      <button
-        className="min-w-[96px] py-1.5 px-4 rounded-md shadow-md font-light"
+      <Link
+        className="min-w-[96px] py-1.5 text-center px-4 rounded-md shadow-md font-light"
         style={{
           background: bgColor
         }}
         key={index}
+        to={`/countries/${pageID}/${data.name}/${countryData.name}`}
+        state={{ countryData }}
       >
         {countryData.name}
-      </button>
+      </Link>
     )
   }
 
-  // {formatText("Currencies", data.currencies)}
-  // {formatText("Languages", data.languages)}
 
   return (
     <div className="flex flex-col px-14 items-center lg:items-start lg:px-20">
@@ -104,7 +101,7 @@ export default function CountryDetail() {
               >
                 {formatText("Top Level Domain", data.tld)}
                 {formatText("Currencies", data.currency)}
-                {formatText("Languages", data.languages)}
+                {formatText("Languages", data.languages.join(", "))}
               </div>
             </div>
             <div
@@ -116,12 +113,11 @@ export default function CountryDetail() {
                 Border Countries:
               </h2>
               <div
-                className="flex gap-x-2.5"
+                className="flex gap-2.5 flex-wrap"
               >
                 {/*Function that shows the button*/
                   // change border countries in search data to fetch the countryies ahead of time.
                   borders.map((item, index) => {
-                    console.log(item)
                     return borderBotton(...item, index)
                   })
                 }
