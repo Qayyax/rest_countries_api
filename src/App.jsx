@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import SearchLayout from "./components/search/SeachLayout";
 import DarkModeProvider from "./components/DarkModeContext";
@@ -20,6 +20,7 @@ function App() {
             <Route path="/countries/:pageID/:country" element={<CountryDetail />} />
             <Route path="/countries/:pageID/:country/:border" element={<BorderCountry />} />
           </Route>
+          <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
       </BrowserRouter>
     </DarkModeProvider>
