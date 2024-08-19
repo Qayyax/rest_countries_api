@@ -1,8 +1,14 @@
-# React + Vite
+# REST Countries API with color theme switcher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Frontend mentor advance challenge which includes routing, REST API, theme switcher.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What I learned from this challenge
+
+I was able to practice React routing and got to experience how some react router works.
+Routers like `Location`, `useLocation`, `Navigate`, `useNavigate` and many more.
+
+
+## What I want to improve
+
+I want to break my components more and make them simple, and not have to repeat functions accross components
