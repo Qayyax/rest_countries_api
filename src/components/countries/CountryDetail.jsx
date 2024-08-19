@@ -52,7 +52,7 @@ export default function CountryDetail() {
   // {formatText("Languages", data.languages)}
 
   return (
-    <div className="flex flex-col items-center lg:items-start lg:px-20">
+    <div className="flex flex-col px-14 items-center lg:items-start lg:px-20">
       <div
         className="flex flex-col pt-10 pb-16 gap-16 items-start justify-start lg:gap-20 lg:justify-between w-full"
         style={{
