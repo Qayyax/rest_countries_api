@@ -37,7 +37,7 @@ export default function Country({ data }) {
   return (
     <Link
       to={`/countries/${pageID}/${data.name}`}
-      state={{ data, borderData }}
+      state={{ data, borderData, pageID }}
     >
       <div
         className="flex flex-col shadow-md  rounded-md "
