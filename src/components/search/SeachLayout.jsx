@@ -68,8 +68,6 @@ export default function SearchLayout() {
     return baseUrl + type + '/' + name;
   }
 
-  console.log("This now", fullURL)
-
   // Regions to filter.
   const filterCountries = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
   return (
