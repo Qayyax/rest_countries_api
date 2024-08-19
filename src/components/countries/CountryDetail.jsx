@@ -116,10 +116,9 @@ export default function CountryDetail() {
                 className="flex gap-2.5 flex-wrap"
               >
                 {/*Function that shows the button*/
-                  // change border countries in search data to fetch the countryies ahead of time.
-                  borders.map((item, index) => {
-                    return borderBotton(...item, index)
-                  })
+                  borders.length > 0
+                    ? borders.map((item, index) => borderBotton(...item, index))
+                    : "None"
                 }
               </div>
             </div>
